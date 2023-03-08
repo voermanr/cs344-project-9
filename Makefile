@@ -1,5 +1,5 @@
 CC=gcc
-CCOPTS=-Wall -Wextra -Werror
+CCOPTS=-Wall -Wextra -Werror -g
 LIBS=
 
 SRCS=$(wildcard *.c)
