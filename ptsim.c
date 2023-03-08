@@ -175,3 +175,22 @@ int main(int argc, char *argv[])
         // TODO: more command line arguments
     }
 }
+
+int load_value(int proc_num, int virt_addr) {
+    //TODO: week 10 implement
+    return proc_num + virt_addr;
+
+}
+
+int store_value(int proc_num, int virt_addr, int value) {
+    //TODO week 10 implement
+    return proc_num + virt_addr + value;
+}
+
+int kill_process(int proc_num) {
+    //TODO: week 10 implement
+    //int page_table = get_page_table(proc_num);
+    //int page_table_page = mem[proc_num + PAGE_COUNT];
+
+    return proc_num;
+}
