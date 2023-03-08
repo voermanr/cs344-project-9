@@ -64,18 +64,20 @@ int allocate_page() {
 //
 void new_process(int proc_num, int page_count)
 {
-    (void)proc_num;   // remove after implementation
-    (void)page_count; // remove after implementation
-
-    // TODO
     int page_table = allocate_page();
+
+    if (!page_table) {
+        printf("OOM: proc %d: page table\n", proc_num);
+        return;
+    }
 
     mem[PAGE_COUNT + proc_num] = page_table;
 
     for (int i = 0; i < page_count; ++i){
         int new_page = allocate_page();
 
-
+        int pt_addr = get_address(page_table, i);
+        mem[pt_addr] = new_page;
     }
 }
 
