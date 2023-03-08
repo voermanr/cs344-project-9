@@ -41,6 +41,15 @@ unsigned char get_page_table(int proc_num)
     return mem[ptp_addr];
 }
 
+int allocate_page() {
+    for (int i = 0; i < PAGE_COUNT; ++i){
+        if (!mem[i]) {
+            return i;
+        }
+    }
+    return 0xff;
+}
+
 //
 // Allocate pages for a new process
 //
@@ -52,6 +61,15 @@ void new_process(int proc_num, int page_count)
     (void)page_count; // remove after implementation
 
     // TODO
+    int page_table = allocate_page();
+
+    mem[PAGE_COUNT + proc_num] = page_table;
+
+    for (int i = 0; i < page_count; ++i){
+        int new_page = allocate_page();
+
+
+    }
 }
 
 //
@@ -96,6 +114,8 @@ void print_page_table(int proc_num)
         }
     }
 }
+
+
 
 //
 // Main -- process command line
