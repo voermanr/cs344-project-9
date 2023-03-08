@@ -171,8 +171,6 @@ int main(int argc, char *argv[])
                 load_value(proc_num, virt_addr);
             }
         }
-
-        // TODO: more command line arguments
     }
 }
 
