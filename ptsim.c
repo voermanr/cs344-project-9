@@ -50,6 +50,7 @@ unsigned char get_page_table(int proc_num)
 int allocate_page() {
     for (int i = 0; i < PAGE_COUNT; ++i){
         if (!mem[i]) {
+            mem[i] = 1;
             return i;
         }
     }
