@@ -13,6 +13,12 @@
 // Simulated RAM
 unsigned char mem[MEM_SIZE];
 
+int kill_process(int num);
+
+int store_value(int num, int addr, int value);
+
+int load_value(int num, int addr);
+
 //
 // Convert a page,offset into an address
 //
