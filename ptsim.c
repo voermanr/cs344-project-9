@@ -17,7 +17,8 @@ int kill_process(int num);
 int store_value(int num, int addr, int value);
 int load_value(int num, int addr);
 
-//
+void parse_command_line(int argc, char *const *argv);
+
 // Convert a page,offset into an address
 int get_address(int page, int offset)
 {
@@ -120,6 +121,10 @@ int main(int argc, char *argv[])
     
     initialize_mem();
 
+    parse_command_line(argc, argv);
+}
+
+void parse_command_line(int argc, char *const *argv) {
     for (int i = 1; i < argc; i++) {
         if (strcmp(argv[i], "pfm") == 0) {
             print_page_free_map();
