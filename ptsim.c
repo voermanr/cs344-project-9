@@ -13,6 +13,7 @@
 // Simulated RAM
 unsigned char mem[MEM_SIZE];
 
+void new_process(int proc_num, int page_count);
 int kill_process(int num);
 int store_value(int num, int addr, int value);
 int load_value(int num, int addr);
@@ -182,9 +183,19 @@ int store_value(int proc_num, int virt_addr, int value) {
 
 int kill_process(int proc_num) {
     //TODO: week 10 implement
-    //int page_table = get_page_table(proc_num);
-    //int page_table_page = mem[proc_num + PAGE_COUNT];
+    int page_table = get_page_table(proc_num);
 
+    for (int i = 0; i < PAGE_COUNT; i++) {
+        int addr = get_address(page_table, i);
+
+        int page_table_page = mem[addr];
+
+        if (page_table_page != 0) {
+            deallocate_page(page_table_page);
+        }
+    }
+
+    deallocate_page(page_table);
     return proc_num;
 }
 
