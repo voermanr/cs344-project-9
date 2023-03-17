@@ -181,7 +181,6 @@ int load_value(int proc_num, int virt_addr) {
 }
 
 int store_value(int proc_num, int virt_addr, int value) {
-    //TODO week 10 implement
     int physical_address = get_physical_address(proc_num, virt_addr);
     mem[physical_address] = value;
 
@@ -191,7 +190,6 @@ int store_value(int proc_num, int virt_addr, int value) {
 }
 
 int kill_process(int proc_num) {
-    //TODO: week 10 implement
     int page_table = get_page_table(proc_num);
 
     for (int i = 0; i < PAGE_COUNT; i++) {
