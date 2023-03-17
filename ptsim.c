@@ -179,7 +179,12 @@ int get_physical_address(int proccess_number, int virtual_address) {
 
 int store_value(int proc_num, int virt_addr, int value) {
     //TODO week 10 implement
-    return proc_num + virt_addr + value;
+    int physical_address = get_physical_address(proc_num, virt_addr);
+    mem[physical_address] = value;
+
+    printf("Store proc %d: %d => %d, value=%d\n", proc_num, virt_addr, physical_address, value);
+
+    return 0;
 }
 
 int kill_process(int proc_num) {
