@@ -19,6 +19,15 @@ int load_value(int num, int addr);
 
 void parse_command_line(int argc, char *const *argv);
 
+void deallocate_page(int page);
+
+int test_np_1_2_pfm_kp_1_pfm() {
+    new_process(1, 2);
+    kill_process(1);
+
+    assert(mem[1] == 0);
+    return 0;
+}
 // Convert a page,offset into an address
 int get_address(int page, int offset)
 {
@@ -114,6 +123,8 @@ int main(int argc, char *argv[])
 {
     assert(PAGE_COUNT * PAGE_SIZE == MEM_SIZE);
 
+    // test_np_1_2_pfm_kp_1_pfm();
+
     if (argc == 1) {
         fprintf(stderr, "usage: ptsim commands\n");
         return 1;
@@ -175,4 +186,8 @@ int kill_process(int proc_num) {
     //int page_table_page = mem[proc_num + PAGE_COUNT];
 
     return proc_num;
+}
+
+void deallocate_page(int page) {
+    mem[page] = 0;
 }
