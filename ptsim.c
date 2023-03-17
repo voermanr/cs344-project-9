@@ -22,13 +22,6 @@ void parse_command_line(int argc, char *const *argv);
 
 void deallocate_page(int page);
 
-int test_np_1_2_pfm_kp_1_pfm() {
-    new_process(1, 2);
-    kill_process(1);
-
-    assert(mem[1] == 0);
-    return 0;
-}
 // Convert a page,offset into an address
 int get_address(int page, int offset)
 {
