@@ -164,6 +164,14 @@ void parse_command_line(int argc, char *const *argv) {
     }
 }
 
+int get_physical_address(int process_number, int virtual_address) {
+    //int virtual_page = virtual_address >> 8;
+    int offset = virtual_address & 255;
+
+    int physical_page = get_page_table(process_number);
+    return (physical_page << 8 ) | offset;
+}
+
 int load_value(int proc_num, int virt_addr) {
     //TODO: week 10 implement
     return proc_num + virt_addr;
