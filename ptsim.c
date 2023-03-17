@@ -169,6 +169,14 @@ int load_value(int proc_num, int virt_addr) {
     return proc_num + virt_addr;
 }
 
+int get_physical_address(int proccess_number, int virtual_address) {
+    int virtual_page = virtual_address >> 8;
+    int offset = virtual_address & 255;
+
+    int physical_page = get_page_table(proccess_number);
+    return (physical_page << 8 ) | offset;
+}
+
 int store_value(int proc_num, int virt_addr, int value) {
     //TODO week 10 implement
     return proc_num + virt_addr + value;
